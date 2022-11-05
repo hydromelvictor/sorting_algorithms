@@ -1,39 +1,42 @@
 #include "sort.h"
 
-int partition(int *array, size_t size, int lo, int hi)
+void swap(int *array, int i, int j)
 {
-    int x = array[hi], tmp, i = lo, j;
+    int tmp;
+    tmp = array[i];
+    array[i] = array[j];
+    array[j] = tmp;
+}
 
-    for (j = lo; j < hi; j++)
+int part(int *array, size_t size, int p, int r)
+{
+    int pivot = array[r], i = p - 1, j;
+    for (j = p; j < r; j++)
     {
-        if (array[j] < x)
+        if (array[j] <= pivot)
         {
-            tmp = array[i];
-            array[i] = array[j];
-            array[j] = tmp;
             i++;
+            swap(array, i, j);
         }
     }
-
-    tmp = array[i];
-    array[i] = array[hi];
-    array[hi] = tmp;
+    i++;
+    swap(array, i, r);
     print_array(array, size);
     return (i);
 }
 
-void sorting(int *array, size_t size, int lo, int hi)
+void sort(int *array, size_t size, int p, int r)
 {
-    int i;
-    if (lo < hi)
-    {
-        i = partition(array, size, lo, hi);
-        sorting(array, size, lo, i - 1);
-        sorting(array, size, i + 1, hi);
-    }
+    int q;
+    if (p >= r || p < 0)
+        return;
+
+    q = part(array, size, p, r);
+    sort(array, size, p, q - 1);
+    sort(array, size, q + 1, r);
 }
 
 void quick_sort(int *array, size_t size)
 {
-    sorting(array, size, 0, size);
+    sort(array, size, 0, size - 1);
 }
