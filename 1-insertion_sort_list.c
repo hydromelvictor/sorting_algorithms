@@ -20,7 +20,7 @@ void change(listint_t *lab, listint_t *fab, listint_t **head)
 void insertion_sort_list(listint_t **list)
 {
     listint_t *current = *list, *back;
-    if (*list == NULL || (*list)->next == NULL)
+    if (*list == NULL || current->next == NULL)
     {
         return;
     }
