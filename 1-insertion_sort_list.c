@@ -1,20 +1,16 @@
 #include "sort.h"
 
-void change(listint_t *lab, listint_t *fab, listint_t **head)
+void change(listint_t *back, listint_t *nexter, listint_t **head)
 {
-    lab->next = fab->next;
-    if (fab->next != NULL)
-        fab->next->prev = lab;
-
-    fab->next = lab;
-
-    fab->prev = lab->prev;
-    if (lab->prev != NULL)
-        lab->prev->next = fab;
+    back->next = nexter->next;
+    if (nexter->next != NULL)
+        nexter->next->prev = back;
+    
+    nexter->prev = back->prev;
+    if (back->prev != NULL)
+        back->prev->next = nexter;
     else
-        *head = fab;
-
-    lab->prev = fab;
+        *head = nexter;
 }
 
 void insertion_sort_list(listint_t **list)
@@ -24,11 +20,11 @@ void insertion_sort_list(listint_t **list)
     {
         return;
     }
-    while (current)
+    while (current != NULL)
     {
         back = current;
         current = current->next;
-        while (back)
+        while (back != NULL)
         {
             if (back->n > current->n)
             {
