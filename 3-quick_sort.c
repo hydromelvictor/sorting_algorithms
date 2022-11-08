@@ -1,7 +1,7 @@
 #include "sort.h"
 
 /**
- * swap - swap
+ * swap - swaping
  * @array: array
  * @i: i
  * @j: j
