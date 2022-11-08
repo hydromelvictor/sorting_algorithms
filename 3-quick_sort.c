@@ -12,16 +12,19 @@ int part(int *array, size_t size, int p, int r)
 {
     int pivot = array[r], i = p - 1, j;
     for (j = p; j < r; j++)
-    {
+    {   
         if (array[j] <= pivot)
         {
             i++;
             swap(array, i, j);
+            if (j != i)
+                print_array(array, size);
         }
     }
     i++;
     swap(array, i, r);
-    print_array(array, size);
+    if (j != i)
+        print_array(array, size);
     return (i);
 }
 
