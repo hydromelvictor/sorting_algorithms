@@ -6,11 +6,15 @@ void change(listint_t *back, listint_t *nexter, listint_t **head)
     if (nexter->next != NULL)
         nexter->next->prev = back;
     
+    nexter->next = back;
+    
     nexter->prev = back->prev;
     if (back->prev != NULL)
         back->prev->next = nexter;
     else
         *head = nexter;
+    
+    back->prev = nexter;
 }
 
 void insertion_sort_list(listint_t **list)
@@ -24,14 +28,17 @@ void insertion_sort_list(listint_t **list)
     {
         back = current;
         current = current->next;
-        while (back != NULL)
+        if (current != NULL)
         {
-            if (back->n > current->n)
+            while (back != NULL)
             {
-                change(back, current, list);
-                print_list(*list);
+                if (back->n > current->n)
+                {
+                    change(back, current, list);
+                    print_list(*list);
+                }
+                back = back->prev;
             }
-            back = back->prev;
         }
     }
 }
