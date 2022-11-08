@@ -23,7 +23,7 @@ back->prev = nexter;
 }
 
 /**
- * inertion_sort_list - sort insertion
+ * insertion_sort_list - sort insertion
  * @list: list
 */
 void insertion_sort_list(listint_t **list)
