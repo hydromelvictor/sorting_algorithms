@@ -27,13 +27,13 @@ int part(int *array, size_t size, int p, int r)
 
 void sort(int *array, size_t size, int p, int r)
 {
-    int q;
+    int pivot;
     if (p >= r || p < 0)
         return;
 
-    q = part(array, size, p, r);
-    sort(array, size, p, q - 1);
-    sort(array, size, q + 1, r);
+    pivot = part(array, size, p, r);
+    sort(array, size, p, pivot - 1);
+    sort(array, size, pivot + 1, r);
 }
 
 void quick_sort(int *array, size_t size)

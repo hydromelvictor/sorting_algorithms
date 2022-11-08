@@ -6,9 +6,10 @@ ordre croissant à l'aide de l'algorithme de tri rapide
 Prototype : void quick_sort(int *array, size_t size);
 Vous devez implémenter le schéma de partition Lomuto.
 Le pivot doit toujours être le dernier élément de la partition triée.
-Vous êtes censé imprimer le tableau après chaque échange de deux éléments
-(Voir exemple ci-dessous)
-Écrivez dans le fichier 3-O, les notations en grand O de la complexité temporelle de
+Vous êtes censé imprimer le tableau après chaque échange de deux 
+éléments (Voir exemple ci-dessous)
+Écrivez dans le fichier 3-O, les notations en grand O de la 
+complexité temporelle de
 l'algorithme de tri rapide, avec 1 notation par ligne :
 
 
