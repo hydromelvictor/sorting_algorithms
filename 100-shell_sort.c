@@ -1,43 +1,28 @@
 #include "sort.h"
-void knuth(int *gap, int n)
-{
-    int i;
-    for( i = 0; gap[i] < n; i++)
-    {
-        if (i == 0)
-            gap[i] = 0;
-        else
-            gap[i] = gap[i - 1] * 3 + 1;
-    }
-}
 
 void shell_sort(int *array, size_t size)
 {
-size_t i, j, r;
-int x, *gap = NULL, m;
-if (array == NULL || size < 2)
+int value;
+size_t i, n, j;
+n = 1;
+while (n < size)
+    n = 3 * n + 1;
+
+n = n / 3;
+while (n != 0)
 {
-    return;
-}
-knuth(gap, size);
-for (m = 0; (gap[m] =! '\0'); m++);
-m = m - 1;
-for (; m >= 0; m--)
-{
-    for (r = 0; r < (unsigned int)gap[m]; r++)
+    for (i = n; i < size; i++)
     {
-        for (i = gap[m] + r; i < size; i += (unsigned int)m)
+        value = array[i];
+        j = i;
+        while ((j > n - 1) && array[j - n] > value)
         {
-            j = i;
-            x = array[i];
-            while (j > r && array[j - gap[m]] > x)
-            {
-                array[j] = array[j - gap[m]];
-                j = j - gap[m];
-            }
-            array[j] = x;
+            array[j] = array[j - n];
+            j = j - n;
         }
-        print_array(array, size);
+        array[j] = value;
     }
+    print_array(array, size);
+    n = n / 3;
 }
 }
