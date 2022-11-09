@@ -29,7 +29,7 @@ back->prev = nexter;
 void insertion_sort_list(listint_t **list)
 {
 listint_t *current = *list, *back;
-if (*list == NULL || current->next == NULL)
+if (*list == NULL || current->next == NULL  || list == NULL)
 {
 return;
 }

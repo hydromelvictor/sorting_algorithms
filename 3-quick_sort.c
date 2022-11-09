@@ -20,6 +20,7 @@ array[j] = tmp;
  * @size: size
  * @p: p
  * @r: r
+ * Return: int
 */
 int part(int *array, size_t size, int p, int r)
 {
